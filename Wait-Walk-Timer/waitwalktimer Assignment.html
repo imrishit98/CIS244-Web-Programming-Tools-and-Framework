@@ -1,0 +1,93 @@
+<!-- 
+Author: Rishit Patel
+Date: Sep 18, 2019
+Description: Walk Timer Assignment -->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://kit.fontawesome.com/7a4662c156.js"></script>
+<title>Wait / Walk - Part 1 </title>
+<style>
+	body {
+		font-size: 197px;
+	}
+	.red {
+		color: red;
+	}
+	.green {
+		color: Chartreuse;
+		margin-left: 37px;
+	}
+	.container {
+		position: absolute;
+		text-align: center;
+		color: white;
+	}
+	.walklight {
+		position: absolute;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.waitwalksign {
+		position: absolute;
+		top: 81px;
+		left: 111px;
+	}
+	.timer {
+		position: absolute;
+		top: 411px;
+		left: 81px;
+	}
+	input {
+		width: 251px;
+		height: 221px;
+		font-size: 201px;
+		border: none;
+		background: transparent;
+		color: orange;
+		text-align: center;
+	}
+	.container img {
+    height: 711px;
+	}
+</style>
+<body onload="waitWalkTimer()">
+<div class="container">
+	<div class="walklight">
+		<img src="walklight.png" />
+	</div>
+	<div class="waitwalksign">
+		<i id="waitwalksign" class="far fa-hand-paper red"></i>
+	</div>
+	<div class="timer">
+	<input type="text" id="theTimer">
+	</div>
+</div>
+<script>
+	function toggleWaitWalk() {
+		var x = document.getElementById("waitwalksign").className;
+		if (x=="far fa-hand-paper red") {
+			document.getElementById("waitwalksign").className="fas fa-walking green";
+		}
+		else {
+			document.getElementById("waitwalksign").className="far fa-hand-paper red";
+		}
+		waitWalkTimer();
+	}
+	function waitWalkTimer() {
+		var timeleft = 0;
+		var countdownTimer = setInterval(function() {
+		document.getElementById("theTimer").value = 10 - timeleft;
+		timeleft += 1;
+		if(timeleft >= 11) {
+			clearInterval(countdownTimer);
+			toggleWaitWalk();
+		}	
+		}, 1000);
+	}
+	
+</script>
+</head>
+</body>
+</html>
